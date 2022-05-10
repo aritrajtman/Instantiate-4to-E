@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Instantiator : MonoBehaviour
 {
@@ -18,14 +20,18 @@ public class Instantiator : MonoBehaviour
     {
         
     }
-
-    public void TripleInstantiate()
+    GameObject clon;
+    public int cloneAmount;
+    public Text txtCloneAmount;
+    public void MultiInstantiate()
     {
-        int counter = 0;
-        while (counter < 3)
+        cloneAmount = int.Parse(txtCloneAmount.text);
+        
+
+        for (int i = 0; i < cloneAmount; i++)
         {
-            Instantiate(objectToClone);
-            counter++;
+            clon = Instantiate(objectToClone);
+            Destroy(clon, 1);
         }
     }
 }
